@@ -11,6 +11,7 @@ const rn1 = {
     D: 500,
     M: 1000,
 };
+const rn1Keys = Object.keys(rn1);
 
 const rn2 = {
     IV: 4,
@@ -20,31 +21,7 @@ const rn2 = {
     CD: 400,
     CM: 900,
 };
-
-const rtoi = (r) => {
-    const r2 = r.slice(0, 2);
-    if (Object.keys(rn2).includes(r2)) {
-        return rn2[r2] + rtoi(r.slice(2));
-    }
-
-    const r1 = r.slice(0, 1);
-    if (Object.keys(rn1).includes(r1)) {
-        return rn1[r1] + rtoi(r.slice(1));
-    }
-
-    return 0;
-};
-
-assert.equal(rtoi(""), 0);
-assert.equal(rtoi("I"), 1);
-assert.equal(rtoi("IV"), 4);
-assert.equal(rtoi("XIV"), 14);
-assert.equal(rtoi("CXLV"), 145);
-assert.equal(rtoi("CXLVIII"), 148);
-assert.equal(rtoi("CMX"), 910);
-assert.equal(rtoi("MI"), 1001);
-assert.equal(rtoi("MCCXXXIV"), 1234);
-assert.equal(rtoi("MCCXCIV"), 1294);
+const rn2Keys = Object.keys(rn2);
 
 const combined = { ...rn1, ...rn2 };
 const rr = Object.keys(combined)
@@ -53,6 +30,20 @@ const rr = Object.keys(combined)
         acc.push([combined[key], key]);
         return acc;
     }, []);
+
+const rtoi = (r) => {
+    const r2 = r.slice(0, 2);
+    if (rn2Keys.includes(r2)) {
+        return rn2[r2] + rtoi(r.slice(2));
+    }
+
+    const r1 = r.slice(0, 1);
+    if (rn1Keys.includes(r1)) {
+        return rn1[r1] + rtoi(r.slice(1));
+    }
+
+    return 0;
+};
 
 const itor = (i, ret = [""], lookup = rr) => {
     if (!lookup[0]) {
@@ -72,6 +63,29 @@ const itor = (i, ret = [""], lookup = rr) => {
 
     return itor(remainder, ret, lookup.slice(1));
 };
+
+const [, , command, value] = process.argv;
+
+if (command === "rtoi") {
+    console.log(rtoi(value));
+    process.exit(0);
+}
+
+if (command === "itor") {
+    console.log(itor(Number(value)));
+    process.exit(0);
+}
+
+assert.equal(rtoi(""), 0);
+assert.equal(rtoi("I"), 1);
+assert.equal(rtoi("IV"), 4);
+assert.equal(rtoi("XIV"), 14);
+assert.equal(rtoi("CXLV"), 145);
+assert.equal(rtoi("CXLVIII"), 148);
+assert.equal(rtoi("CMX"), 910);
+assert.equal(rtoi("MI"), 1001);
+assert.equal(rtoi("MCCXXXIV"), 1234);
+assert.equal(rtoi("MCCXCIV"), 1294);
 
 assert.equal(itor(0), "");
 assert.equal(itor(1), "I");
@@ -94,7 +108,6 @@ const itorUnary = (i) => {
     for (let j = 0; j < rr.length; j++) {
         const [num, numeral] = rr[j];
         const times = Math.floor(unary.length / num);
-        const remainder = unary.length % num;
         const isInLookup = !!times;
 
         if (isInLookup) {
@@ -120,15 +133,3 @@ assert.equal(itorUnary(1003), "MIII");
 assert.equal(itorUnary(1234), "MCCXXXIV");
 assert.equal(itorUnary(1294), "MCCXCIV");
 assert.equal(itorUnary(2020), "MMXX");
-
-const [, , command, value] = process.argv;
-
-if (command === "rtoi") {
-    console.log(rtoi(value));
-    process.exit(0);
-}
-
-if (command === "itor") {
-    console.log(itor(value));
-    process.exit(0);
-}
