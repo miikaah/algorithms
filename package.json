@@ -1,0 +1,20 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "These files here are algorithms that I have found interesting to play with.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rtoi": "node src/roman-numerals.mjs rtoi",
+    "itor": "node src/roman-numerals.mjs itor"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "prettier": "^2.2.1"
+  }
+}
