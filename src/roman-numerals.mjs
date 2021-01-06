@@ -113,7 +113,7 @@ const itorUnary = (i) => {
         if (isInLookup) {
             unary = unary.slice(num * times);
 
-            for (let j = 0; j < times; j++) {
+            for (let k = 0; k < times; k++) {
                 ret.push(numeral);
             }
         }
