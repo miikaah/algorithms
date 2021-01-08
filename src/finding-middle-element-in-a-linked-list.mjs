@@ -25,6 +25,7 @@
 
 import { strict as assert } from "assert";
 
+// Stupid Linked List implementation but it works for this ugh
 class Node {
     constructor(root) {
         this.root = root;
