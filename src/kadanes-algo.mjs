@@ -48,28 +48,23 @@ const testCases = [
 const maxSubarraySum = (test) => {
     const { input } = test;
     const { length } = input;
-    const arrOfSubArr = [];
+    const sums = [];
 
     let sizeOfSubArray = 1;
     while (sizeOfSubArray <= length) {
         for (let i = 0; i < length; i++) {
-            let subArr = [];
+            let sum = 0;
 
             for (let j = 0; j < sizeOfSubArray; j++) {
                 if (i + j === length) {
                     break;
                 }
-                subArr.push(input[i + j]);
+                sum += input[i + j];
             }
-            arrOfSubArr.push(subArr);
+            sums.push(sum);
         }
         sizeOfSubArray++;
     }
-
-    const sums = arrOfSubArr.reduce((acc, arr) => {
-        acc.push(arr.reduce((acc, v) => acc + v, 0));
-        return acc;
-    }, []);
 
     return Math.max(...sums);
 };
