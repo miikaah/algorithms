@@ -69,10 +69,12 @@ const merge = (test) => {
 
     // eslint-disable-next-line no-constant-condition
     while (true) {
+        // When the last element of arr1 is smaller than the first element of arr2 the work is complete
         if (arr1[n - 1] < arr2[0]) {
             break;
         }
 
+        // Take the last element of arr1 and place it in the correct index in arr2
         for (let i = 0; i < m; i++) {
             if (i + 1 === m) {
                 arr2.push(arr1.pop());
@@ -84,6 +86,7 @@ const merge = (test) => {
             }
         }
 
+        // Take the first element of arr2 and place it in the correct index in arr1
         for (let i = 0; i < m; i++) {
             if (arr1[i] > arr2[0]) {
                 arr1.splice(i, 0, arr2.shift());
@@ -103,35 +106,45 @@ testCases.forEach((test) => {
 });
 
 // Version that doesn't used any extra memory
-//
-// const merge = ({ input }) => {
-//     // eslint-disable-next-line no-constant-condition
-//     while (true) {
-//         if (input[0][input[0].length - 1] < input[1][0]) {
-//             break;
-//         }
-//
-//         for (let i = 0; i < input[1].length; i++) {
-//             if (i + 1 === input[1].length) {
-//                 input[1].push(input[0].pop());
-//                 break;
-//             }
-//             if (
-//                 input[1][i] < input[0][input[0].length - 1] &&
-//                 input[1][i + 1] > input[0][input[0].length - 1]
-//             ) {
-//                 input[1].splice(i + 1, 0, input[0].pop());
-//                 break;
-//             }
-//         }
-//
-//         for (let i = 0; i < input[1].length; i++) {
-//             if (input[0][i] > input[1][0]) {
-//                 input[0].splice(i, 0, input[1].shift());
-//                 break;
-//             }
-//         }
-//     }
-//
-//     return input;
-// };
+
+const mergeWithoutExtraSpace = ({ input }) => {
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+        // When the last element of arr1 is smaller than the first element of arr2 the work is complete
+        if (input[0][input[0].length - 1] < input[1][0]) {
+            break;
+        }
+
+        // Take the last element of arr1 and place it in the correct index in arr2
+        for (let i = 0; i < input[1].length; i++) {
+            if (i + 1 === input[1].length) {
+                input[1].push(input[0].pop());
+                break;
+            }
+            if (
+                input[1][i] < input[0][input[0].length - 1] &&
+                input[1][i + 1] > input[0][input[0].length - 1]
+            ) {
+                input[1].splice(i + 1, 0, input[0].pop());
+                break;
+            }
+        }
+
+        // Take the first element of arr2 and place it in the correct index in arr1
+        for (let i = 0; i < input[1].length; i++) {
+            if (input[0][i] > input[1][0]) {
+                input[0].splice(i, 0, input[1].shift());
+                break;
+            }
+        }
+    }
+
+    return input;
+};
+
+testCases.forEach((test) => {
+    const [arr1, arr2] = mergeWithoutExtraSpace(test);
+    const [expected1, expected2] = test.expected;
+    assert.deepEqual(arr1, expected1);
+    assert.deepEqual(arr2, expected2);
+});
