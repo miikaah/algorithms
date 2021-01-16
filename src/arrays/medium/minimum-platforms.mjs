@@ -63,7 +63,7 @@ const minPlatforms = ({ input }) => {
     const [arrivals, departures] = input;
     const { length } = arrivals;
 
-    let minPlatforms = [];
+    let allMinPlatforms = [];
     for (let i = 0; i < length; i++) {
         let departure = departures[i];
 
@@ -89,10 +89,10 @@ const minPlatforms = ({ input }) => {
             }
             curMinPlatforms++;
         }
-        minPlatforms.push(curMinPlatforms);
+        allMinPlatforms.push(curMinPlatforms);
     }
 
-    return Math.max(...minPlatforms);
+    return Math.max(...allMinPlatforms);
 };
 
 testCases.forEach((test) => assert.equal(test.expected, minPlatforms(test)));
