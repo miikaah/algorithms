@@ -19,9 +19,14 @@
 const f = (x) => Math.pow(x, 2) - 3;
 const g = (x) => x * Math.log(x);
 const diff = (x) => g(x) - f(x);
+const threshold = Number(process.argv[2]) || 0.001;
+
+// The proposed solution
+
+const start = Date.now();
 
 const findRoot = (left, right) => {
-    if (Math.abs(left - right) < 0.001) {
+    if (Math.abs(left - right) < threshold) {
         return left;
     }
 
@@ -32,4 +37,9 @@ const findRoot = (left, right) => {
         : findRoot(left, mid);
 };
 
-console.log("root: ", findRoot(0.001, 4));
+console.log("-----------------------------------------");
+console.log("Proposed recursive binary search solution");
+console.log("threshold: ", threshold);
+console.log("root: ", findRoot(threshold, 4));
+console.log(`time: ${Date.now() - start} milliseconds`);
+console.log("-----------------------------------------");
