@@ -30,11 +30,24 @@
 // 5
 
 import { strict as assert } from "assert";
+import fs from "fs";
+import path from "path";
+
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const data = JSON.parse(fs.readFileSync(path.join(__dirname, "test-data-increasing-array.json")));
 
 const testCases = [
     {
         input: [3, 2, 5, 1, 7],
         expected: 5,
+    },
+    {
+        input: [3, 2, 5, 2, 7, 5, 9, 7, 11, 7, 13, 5, 15, 2, 17, 6, 19],
+        expected: 44,
+    },
+    {
+        input: data.input,
+        expected: data.expected,
     },
 ];
 
