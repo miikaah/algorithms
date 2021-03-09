@@ -1,3 +1,5 @@
+// https://cses.fi/alon/task/1068
+//
 // Weird Algorithm
 // TASK
 // Time limit: 1.00 s Memory limit: 512 MB
