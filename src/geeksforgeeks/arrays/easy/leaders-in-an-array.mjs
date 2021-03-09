@@ -62,4 +62,4 @@ const leader = ({ input }) => {
     return leaders.join(" ");
 };
 
-testCases.forEach((test) => assert.equal(test.expected, leader(test)));
+testCases.forEach((test) => assert.equal(leader(test), test.expected));

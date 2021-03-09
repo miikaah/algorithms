@@ -71,5 +71,5 @@ testCases.forEach((test) => {
     console.log(`Memory: ${process.memoryUsage().rss / 1000000} MB`);
     console.log(result);
 
-    assert.deepEqual(test.expected, result);
+    assert.deepEqual(result, test.expected);
 });

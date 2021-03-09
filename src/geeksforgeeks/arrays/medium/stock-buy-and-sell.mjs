@@ -106,4 +106,4 @@ const stockBuySell = ({ input }) => {
     return ret.sort((a, b) => a[0] - b[0]);
 };
 
-testCases.forEach((test) => assert.deepEqual(test.expected, stockBuySell(test)));
+testCases.forEach((test) => assert.deepEqual(stockBuySell(test), test.expected));

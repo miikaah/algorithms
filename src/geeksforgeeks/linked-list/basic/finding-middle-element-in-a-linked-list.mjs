@@ -103,4 +103,4 @@ const getMiddle = (test) => {
     return root.value();
 };
 
-testCases.forEach((test) => assert.equal(test.expected, getMiddle(test)));
+testCases.forEach((test) => assert.equal(getMiddle(test), test.expected));

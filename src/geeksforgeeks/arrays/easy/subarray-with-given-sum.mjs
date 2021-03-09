@@ -77,4 +77,4 @@ const output = (test) => {
     return "-1";
 };
 
-testCases.forEach((test) => assert.equal(test.expected, output(test)));
+testCases.forEach((test) => assert.equal(output(test), test.expected));

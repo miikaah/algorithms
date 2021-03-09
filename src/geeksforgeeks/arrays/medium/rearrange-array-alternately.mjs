@@ -61,4 +61,4 @@ const rearrange = ({ input }) => {
     return ret.flat(Infinity);
 };
 
-testCases.forEach((test) => assert.deepEqual(test.expected, rearrange(test)));
+testCases.forEach((test) => assert.deepEqual(rearrange(test), test.expected));

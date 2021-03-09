@@ -57,4 +57,4 @@ const longestSubstring = ({ input }) => {
     return subs.map((sub) => sub.length).sort((a, b) => b - a)[0];
 };
 
-testCases.forEach((test) => assert.equal(test.expected, longestSubstring(test)));
+testCases.forEach((test) => assert.equal(longestSubstring(test), test.expected));

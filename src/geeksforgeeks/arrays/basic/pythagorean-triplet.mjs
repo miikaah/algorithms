@@ -61,4 +61,4 @@ const hasPythagoreanTriplet = ({ input }) => {
     return false;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, hasPythagoreanTriplet(test)));
+testCases.forEach((test) => assert.equal(hasPythagoreanTriplet(test), test.expected));

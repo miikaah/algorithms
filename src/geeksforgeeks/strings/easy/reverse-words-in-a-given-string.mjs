@@ -46,4 +46,4 @@ const reverseWords = (test) => {
     return input.split(".").reverse().join(".");
 };
 
-testCases.forEach((test) => assert.equal(test.expected, reverseWords(test)));
+testCases.forEach((test) => assert.equal(reverseWords(test), test.expected));

@@ -98,4 +98,4 @@ const spirallyTraverse = ({ input }) => {
     }
 };
 
-testCases.forEach((test) => assert.deepEqual(test.expected, spirallyTraverse(test)));
+testCases.forEach((test) => assert.deepEqual(spirallyTraverse(test), test.expected));

@@ -62,4 +62,4 @@ const findElement = ({ input }) => {
     return -1;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, findElement(test)));
+testCases.forEach((test) => assert.equal(findElement(test), test.expected));

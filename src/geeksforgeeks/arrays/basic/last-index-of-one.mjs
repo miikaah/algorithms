@@ -58,4 +58,4 @@ const lastIndex = ({ input }) => {
     return lastIdx;
 };
 
-testCases.forEach((test) => assert.deepEqual(test.expected, lastIndex(test)));
+testCases.forEach((test) => assert.deepEqual(lastIndex(test), test.expected));

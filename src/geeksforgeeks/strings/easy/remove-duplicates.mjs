@@ -45,4 +45,4 @@ const removeDups = ({ input }) => {
     return Array.from(ret).join("");
 };
 
-testCases.forEach((test) => assert.equal(test.expected, removeDups(test)));
+testCases.forEach((test) => assert.equal(removeDups(test), test.expected));

@@ -69,4 +69,4 @@ const maxSubarraySum = (test) => {
     return Math.max(...sums);
 };
 
-testCases.forEach((test) => assert.equal(test.expected, maxSubarraySum(test)));
+testCases.forEach((test) => assert.equal(maxSubarraySum(test), test.expected));

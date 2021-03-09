@@ -53,4 +53,4 @@ const strstr = ({ input }) => {
     return -1;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, strstr(test)));
+testCases.forEach((test) => assert.equal(strstr(test), test.expected));

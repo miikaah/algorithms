@@ -67,4 +67,4 @@ const inversionCount = ({ input }) => {
     return sum;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, inversionCount(test)));
+testCases.forEach((test) => assert.equal(inversionCount(test), test.expected));

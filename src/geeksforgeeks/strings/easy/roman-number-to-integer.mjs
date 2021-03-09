@@ -78,4 +78,4 @@ const romanToDecimal = (r) => {
     return 0;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, romanToDecimal(test.input)));
+testCases.forEach((test) => assert.equal(romanToDecimal(test.input), test.expected));

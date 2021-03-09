@@ -58,4 +58,4 @@ const countTriplet = (test) => {
     return count;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, countTriplet(test)));
+testCases.forEach((test) => assert.equal(countTriplet(test), test.expected));

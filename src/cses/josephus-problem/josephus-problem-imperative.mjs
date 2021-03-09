@@ -106,5 +106,5 @@ testCases.forEach((test) => {
     console.log(result);
     console.log(result.length);
 
-    assert.deepEqual(test.expected, result);
+    assert.deepEqual(result, test.expected);
 });

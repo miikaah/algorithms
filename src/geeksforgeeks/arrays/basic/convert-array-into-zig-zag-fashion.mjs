@@ -68,4 +68,4 @@ const zigZag = ({ input }) => {
     return input;
 };
 
-testCases.forEach((test) => assert.deepEqual(test.expected, zigZag(test)));
+testCases.forEach((test) => assert.deepEqual(zigZag(test), test.expected));

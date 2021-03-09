@@ -68,4 +68,4 @@ const trappingWater = ({ input }) => {
     return maxRainWater >= 0 ? maxRainWater : 0;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, trappingWater(test)));
+testCases.forEach((test) => assert.equal(trappingWater(test), test.expected));

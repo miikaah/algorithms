@@ -74,4 +74,4 @@ const equilibriumPoint = ({ input }) => {
     return -1;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, equilibriumPoint(test)));
+testCases.forEach((test) => assert.equal(equilibriumPoint(test), test.expected));

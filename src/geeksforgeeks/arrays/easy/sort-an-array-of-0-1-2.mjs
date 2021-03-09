@@ -67,4 +67,4 @@ const sort012 = ({ input }) => {
     return input;
 };
 
-testCases.forEach((test) => assert.deepEqual(test.expected, sort012(test)));
+testCases.forEach((test) => assert.deepEqual(sort012(test), test.expected));

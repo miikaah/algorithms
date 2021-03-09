@@ -47,4 +47,4 @@ const missingNumber = (test) => {
     return next;
 };
 
-testCases.forEach((test) => assert.equal(test.expected, missingNumber(test)));
+testCases.forEach((test) => assert.equal(missingNumber(test), test.expected));

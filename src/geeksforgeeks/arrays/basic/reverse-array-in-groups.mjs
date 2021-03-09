@@ -57,4 +57,4 @@ const reverseInGroups = ({ input, k }) => {
     return input;
 };
 
-testCases.forEach((test) => assert.deepEqual(test.expected, reverseInGroups(test)));
+testCases.forEach((test) => assert.deepEqual(reverseInGroups(test), test.expected));

@@ -95,4 +95,4 @@ const minPlatforms = ({ input }) => {
     return Math.max(...allMinPlatforms);
 };
 
-testCases.forEach((test) => assert.equal(test.expected, minPlatforms(test)));
+testCases.forEach((test) => assert.equal(minPlatforms(test), test.expected));
