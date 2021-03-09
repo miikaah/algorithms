@@ -27,9 +27,15 @@
 
 import { strict as assert } from "assert";
 import fs from "fs";
+import path from "path";
 
-const expected10000 = JSON.parse(fs.readFileSync("./src/cses/josephus-problem10000.json"));
-const expected200000 = JSON.parse(fs.readFileSync("./src/cses/josephus-problem200000.json"));
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const expected10000 = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "josephus-problem10000.json"))
+);
+const expected200000 = JSON.parse(
+    fs.readFileSync(path.join(__dirname, "josephus-problem200000.json"))
+);
 
 const testCases = [
     {
