@@ -55,9 +55,8 @@ const increasingArray = ({ input }) => {
     let counter = 0;
 
     for (let i = 1; i < input.length - 1; i++) {
-        while (input[i - 1] > input[i]) {
-            input[i] = input[i] + 1;
-            counter++;
+        if (input[i - 1] > input[i]) {
+            counter += input[i - 1] - input[i];
         }
     }
 
