@@ -8,7 +8,7 @@ import path from "path";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const data = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "test-data-sieve-of-erastothenes.json"))
+    fs.readFileSync(path.join(__dirname, "test-data-sieve-of-eratosthenes.json"))
 );
 
 const testCases = [
