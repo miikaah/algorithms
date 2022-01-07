@@ -22,7 +22,7 @@ const testCases = [
     },
 ];
 
-const sieveOfErastothenes = ({ amount }) => {
+const sieveOfEratosthenes = ({ amount }) => {
     const primes = [2];
 
     for (let i = 3; i < Infinity; i++) {
@@ -48,7 +48,7 @@ const sieveOfErastothenes = ({ amount }) => {
 
 testCases.forEach((test) => {
     const start = Date.now();
-    const result = sieveOfErastothenes(test);
+    const result = sieveOfEratosthenes(test);
 
     console.log(`Took: ${Date.now() - start} milliseconds`);
     console.log(`Memory: ${process.memoryUsage().rss / 1000000} MB`);
