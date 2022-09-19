@@ -6,19 +6,25 @@ import { strict as assert } from "assert";
 import fs from "fs";
 import path from "path";
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-const data = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "test-data-sieve-of-eratosthenes.json"))
-);
+let __dirname = path.dirname(new URL(import.meta.url).pathname);
+
+// NOTE: Are you fucking kidding me?
+//       See: https://github.com/nodejs/node/issues/23026
+if (process.platform === "win32") {
+    __dirname = __dirname.replace("/", "");
+}
 
 const testCases = [
     {
         amount: 8,
-        expected: [2, 3, 5, 7, 11, 13, 17, 19],
+        expected: () => [2, 3, 5, 7, 11, 13, 17, 19],
     },
     {
         amount: 1000,
-        expected: data,
+        expected: () =>
+            JSON.parse(
+                fs.readFileSync(path.join(__dirname, "test-data-sieve-of-eratosthenes.json"))
+            ),
     },
 ];
 
@@ -46,13 +52,15 @@ const sieveOfEratosthenes = ({ amount }) => {
     return primes;
 };
 
-testCases.forEach((test) => {
+// Slice for easy testing of a subset of tests
+testCases.slice(0, testCases.length).forEach((test) => {
     const start = Date.now();
     const result = sieveOfEratosthenes(test);
 
     console.log(`Took: ${Date.now() - start} milliseconds`);
-    console.log(`Memory: ${process.memoryUsage().rss / 1000000} MB`);
+    console.log(`Memory  rss: ${process.memoryUsage().rss / 1000000} MB`);
+    console.log(`Memory heap: ${process.memoryUsage().heapTotal / 1000000} MB`);
     console.log(result);
 
-    assert.deepEqual(result, test.expected);
+    assert.deepEqual(result, test.expected());
 });
